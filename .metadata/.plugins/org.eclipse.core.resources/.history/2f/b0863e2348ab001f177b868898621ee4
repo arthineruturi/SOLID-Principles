@@ -1,0 +1,28 @@
+package SRP;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class OrderRepository {
+    private List<Order> orders = new ArrayList<>();
+
+    // Save order to "database"
+    public void saveOrder(Order order) {
+        orders.add(order);
+        System.out.println("Order saved to database: " + order.getId());
+    }
+
+    // Update order status
+    public void updateOrderStatus(Order order, String status) {
+        order.setStatus(status);
+        System.out.println("Order status updated to '" + status + "' for order: " + order.getId());
+    }
+
+    // Find order by ID
+    public Order findOrderById(int id) {
+        return orders.stream()
+                .filter(order -> order.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+}

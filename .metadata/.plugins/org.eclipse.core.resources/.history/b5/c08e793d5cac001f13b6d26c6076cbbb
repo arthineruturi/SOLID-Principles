@@ -1,0 +1,14 @@
+package OCP;
+
+//Camera Feature
+public class CameraFeature implements Feature {
+ @Override
+ public void applyFeature(OperatingSystem os) {
+     System.out.println("Opening Camera...");
+     takePicture();
+ }
+
+ private void takePicture() {
+     System.out.println("Picture taken and saved to gallery.");
+ }
+}

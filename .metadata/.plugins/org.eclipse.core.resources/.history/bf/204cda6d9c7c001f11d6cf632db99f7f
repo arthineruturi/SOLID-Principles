@@ -1,0 +1,24 @@
+package OCP;
+
+//Main class to demonstrate adding and accessing a specific feature
+public class Main {
+ public static void main(String[] args) {
+     OperatingSystem os = new OperatingSystem();
+
+     os.callFunction("123-456-7890"); 
+     os.messageFunction("123-456-7890", "Hello! How are you?"); 
+
+     // Add Dark Mode feature
+     os.addFeature("DarkMode", new DarkMode(true));   // Dark Mode added
+     os.addFeature("Camera", new CameraFeature());    // Camera feature added
+
+     // Access and apply the specific Dark Mode feature
+     os.accessFeature("DarkMode");   // Output: Dark Mode is now ON.
+
+     // Access and apply the specific Camera feature
+     os.accessFeature("Camera");     // Output: Opening Camera... Picture taken and saved to gallery.
+
+     // Try accessing a feature that doesn't exist
+     os.accessFeature("MusicPlayer");  // Output: Feature 'MusicPlayer' not found.
+ }
+}

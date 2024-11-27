@@ -1,0 +1,26 @@
+package DIP;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@SpringBootApplication
+public class DependencyInversionExampleApplication implements CommandLineRunner {
+
+    private final Notification notification;
+
+    @Autowired
+    public DependencyInversionExampleApplication(Notification notification) {
+        this.notification = notification;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(DependencyInversionExampleApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        notification.notifyUser("Hello, Spring!", "user@example.com");
+    }
+}

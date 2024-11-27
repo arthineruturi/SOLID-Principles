@@ -1,0 +1,22 @@
+package OCP;
+
+
+public class Main {
+ public static void main(String[] args) {
+     OperatingSystem os = new OperatingSystem();
+
+     os.callFunction("123-456-7890"); 
+     os.messageFunction("123-456-7890", "Hello! How are you?"); 
+
+     os.addFeature("DarkMode", new DarkMode(true));  
+     os.addFeature("Camera", new CameraFeature());   
+
+     // Access and apply the specific Dark Mode feature
+     os.accessFeature("DarkMode");   // Output: Dark Mode is now ON.
+
+     // Access and apply the specific Camera feature
+     os.accessFeature("Camera");     
+
+     os.accessFeature("MusicPlayer"); 
+ }
+}

@@ -1,0 +1,26 @@
+public class DarkMode implements Feature {
+    private boolean isDarkModeEnabled = false;
+
+    public void enableDarkMode() {
+        isDarkModeEnabled = true;
+        System.out.println("Dark Mode is now ON.");
+    }
+
+    public void disableDarkMode() {
+        isDarkModeEnabled = false;
+        System.out.println("Dark Mode is now OFF.");
+    }
+
+    public boolean isDarkModeEnabled() {
+        return isDarkModeEnabled;
+    }
+
+    @Override
+    public void applyFeature(OperatingSystem os) {
+        if (!isDarkModeEnabled) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    }
+}

@@ -1,0 +1,20 @@
+package DIP;
+
+package DIP.example.notification;
+
+import DIP.springframework.beans.factory.annotation.Autowired;
+import DIP.springframework.stereotype.Component;
+
+@Component
+public class Notification {
+    private final MessageService messageService;
+
+    @Autowired
+    public Notification(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    public void notifyUser(String message, String recipient) {
+        messageService.sendMessage(message, recipient);
+    }
+}

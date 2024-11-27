@@ -1,0 +1,26 @@
+package ISP;
+
+public class Main {
+    public static void main(String[] args) {
+        // Instantiate services
+        UserAuthAPI userAuthService = new UserAuthService();
+        TokenVerificationAPI tokenService = new TokenService();
+        RoleManagementAPI roleService = new RoleService();
+
+        // Example: User Authentication
+        System.out.println("\n=== User Authentication ===");
+        userAuthService.login("john_doe", "password123");
+        userAuthService.refreshSession("john_doe");
+        userAuthService.logout("john_doe");
+
+        // Example: Token Verification
+        System.out.println("\n=== Token Verification ===");
+        tokenService.verifyToken("VALID_TOKEN");
+        tokenService.verifyToken("INVALID_TOKEN");
+
+        // Example: Role Management
+        System.out.println("\n=== Role Management ===");
+        roleService.assignRole("john_doe", "Admin");
+        roleService.revokeRole("john_doe", "Admin");
+    }
+}

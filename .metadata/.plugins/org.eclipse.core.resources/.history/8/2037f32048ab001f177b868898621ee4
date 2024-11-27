@@ -1,0 +1,23 @@
+package SRP;
+
+public class OrderProcessor {
+    private OrderRepository orderRepository;
+    private EmailService emailService;
+
+    public OrderProcessor(OrderRepository orderRepository, EmailService emailService) {
+        this.orderRepository = orderRepository;
+        this.emailService = emailService;
+    }
+
+    public void processOrder(Order order) {
+        // Step 1: Save the order
+        orderRepository.saveOrder(order);
+
+        // Step 2: Simulate order approval and updating status
+        orderRepository.updateOrderStatus(order, "COMPLETED");
+
+        // Step 3: Send confirmation email to customer
+        emailService.sendEmail(order.getCustomerEmail(), "Order Confirmation",
+                "Your order #" + order.getId() + " has been successfully processed and completed.");
+    }
+}

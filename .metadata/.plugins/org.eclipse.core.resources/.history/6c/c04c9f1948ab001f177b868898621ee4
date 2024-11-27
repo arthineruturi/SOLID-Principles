@@ -1,0 +1,65 @@
+package SRP;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.HashMap;
+import com.google.gson.Gson;
+
+public class EmailService {
+
+    private static final String SENDGRID_API_KEY = "YOUR_SENDGRID_API_KEY";
+    private static final String SENDGRID_API_URL = "https://api.sendgrid.com/v3/mail/send";
+
+    public static void sendEmail(String recipientEmail, String subject, String messageContent) throws Exception {
+
+        // Set up email content
+        HashMap<String, Object> emailContent = new HashMap<>();
+        HashMap<String, String> from = new HashMap<>();
+        from.put("email", "your_email@example.com");
+        emailContent.put("from", from);
+
+        HashMap<String, String> to = new HashMap<>();
+        to.put("email", recipientEmail);
+        emailContent.put("personalizations", new Object[]{new HashMap<>() {{ put("to", new Object[]{to}); }}});
+
+        emailContent.put("subject", subject);
+
+        HashMap<String, String> content = new HashMap<>();
+        content.put("type", "text/plain");
+        content.put("value", messageContent);
+        emailContent.put("content", new Object[]{content});
+
+        // Convert content to JSON
+        String json = new Gson().toJson(emailContent);
+
+        // Create HTTP Client
+        HttpClient client = HttpClient.newHttpClient();
+
+        // Create HTTP Request
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(SENDGRID_API_URL))
+                .header("Authorization", "Bearer " + SENDGRID_API_KEY)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .build();
+
+        // Send Request
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 202) {
+            System.out.println("Email sent successfully to " + recipientEmail);
+        } else {
+            System.out.println("Failed to send email: " + response.body());
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            sendEmail("recipient@example.com", "Test Subject", "Test Message");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

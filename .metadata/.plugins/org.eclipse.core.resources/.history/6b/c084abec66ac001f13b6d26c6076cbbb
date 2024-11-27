@@ -1,0 +1,5 @@
+package DIP.highlevel;
+
+public class NotificationService {
+
+}

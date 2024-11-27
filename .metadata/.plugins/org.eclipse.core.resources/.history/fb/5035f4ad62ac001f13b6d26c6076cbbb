@@ -1,0 +1,23 @@
+package LSP;
+
+//ETLProcessor.java
+public class Main {
+ public static void main(String[] args) {
+     // Create an instance of ETLExecutor
+     ETLExecutor executor = new ETLExecutor();
+
+     // Extract data from various sources
+     DataExtractor dbExtractor = new DatabaseExtractor("jdbc:mysql://localhost:3306/mydb");
+     DataExtractor csvExtractor = new CSVExtractor("data/input.csv");
+     DataExtractor apiExtractor = new APIExtractor("https://api.example.com/data");
+
+     System.out.println("Running ETL for Database:");
+     executor.runETL(dbExtractor);
+
+     System.out.println("\nRunning ETL for CSV:");
+     executor.runETL(csvExtractor);
+
+     System.out.println("\nRunning ETL for API:");
+     executor.runETL(apiExtractor);
+ }
+}

@@ -1,0 +1,5 @@
+package DIP.abstraction;
+
+public interface MessageSender {
+
+}

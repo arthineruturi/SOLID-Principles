@@ -1,0 +1,22 @@
+package OCP;
+
+
+public class DarkMode implements Feature {
+ private boolean enableDarkMode;
+
+ public DarkMode(boolean enableDarkMode) {
+     this.enableDarkMode = enableDarkMode;
+ }
+
+ @Override
+ public void applyFeature(OperatingSystem os) {
+     if (enableDarkMode && !os.isDarkModeEnabled()) {
+         os.enableDarkMode();  // Only enable Dark Mode if it's not already enabled
+     } else if (!enableDarkMode && os.isDarkModeEnabled()) {
+         os.disableDarkMode(); // Only disable Dark Mode if it's currently enabled
+     } else {
+         System.out.println("No changes needed, Dark Mode is already " + 
+                             (enableDarkMode ? "enabled" : "disabled") + ".");
+     }
+ }
+}

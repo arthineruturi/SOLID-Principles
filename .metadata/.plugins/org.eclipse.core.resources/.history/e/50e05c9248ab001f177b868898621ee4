@@ -1,0 +1,18 @@
+package SRP;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an employee
+        Employee employee = new Employee(1, "John Doe", "123 Main St", 5000.0);
+
+        // Create a tax calculator with a tax rate of 20%
+        TaxCalculator taxCalculator = new TaxCalculator(0.2);
+
+        // Process payroll
+        PayrollProcessor payrollProcessor = new PayrollProcessor(taxCalculator);
+        PayrollDetails payrollDetails = payrollProcessor.processPayroll(employee);
+
+        // Display payroll details
+        System.out.println(payrollDetails);
+    }
+}

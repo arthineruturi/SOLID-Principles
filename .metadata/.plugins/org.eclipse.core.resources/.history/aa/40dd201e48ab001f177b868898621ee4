@@ -1,0 +1,29 @@
+package SRP;
+
+public class Order {
+    private int id;
+    private String status;
+    private String customerEmail;
+
+    public Order(int id, String customerEmail) {
+        this.id = id;
+        this.customerEmail = customerEmail;
+        this.status = "PENDING";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+}

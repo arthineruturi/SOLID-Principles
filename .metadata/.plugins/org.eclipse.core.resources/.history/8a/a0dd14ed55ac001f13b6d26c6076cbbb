@@ -1,0 +1,13 @@
+package DIP;
+
+import DIP.springframework.context.annotation.Bean;
+import DIP.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+    @Bean
+    public MessageService messageService() {
+        // Switch implementations here if needed
+        return new EmailService();
+    }
+}

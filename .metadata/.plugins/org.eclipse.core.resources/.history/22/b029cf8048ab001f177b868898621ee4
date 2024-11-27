@@ -1,0 +1,16 @@
+package SRP;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an order
+        Order order = new Order(101, "customer@example.com");
+
+        // Create instances of services
+        OrderRepository orderRepository = new OrderRepository();
+        EmailService emailService = new EmailService();
+
+        // Create an order processor and process the order
+        OrderProcessor orderProcessor = new OrderProcessor(orderRepository, emailService);
+        orderProcessor.processOrder(order);
+    }
+}

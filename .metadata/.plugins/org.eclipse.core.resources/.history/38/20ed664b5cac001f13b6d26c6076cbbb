@@ -1,0 +1,46 @@
+package OCP;
+
+import java.util.HashMap;
+import java.util.Map;
+
+// Core OS class (Closed for modification)
+public class OperatingSystem {
+    private boolean isDarkModeEnabled = false;
+    private Map<String, Feature> features = new HashMap<>(); 
+    public void callFunction(String phoneNumber) {
+        System.out.println("Calling " + phoneNumber + "...");
+    }
+
+    public void messageFunction(String phoneNumber, String message) {
+        System.out.println("Sending message to " + phoneNumber + ": " + message);
+    }
+
+    public void addFeature(String featureName, Feature feature) {
+        features.put(featureName, feature);  // Store the feature by name
+        System.out.println(featureName + " feature added.");
+    }
+
+    // Access a specific feature by name and apply it
+    public void accessFeature(String featureName) {
+        Feature feature = features.get(featureName);
+        if (feature != null) {
+            feature.applyFeature(this);
+        } else {
+            System.out.println("Feature '" + featureName + "' not found.");
+        }
+    }
+
+    public void enableDarkMode() {
+        this.isDarkModeEnabled = true;
+        System.out.println("Dark Mode is now ON.");
+    }
+
+    public void disableDarkMode() {
+        this.isDarkModeEnabled = false;
+        System.out.println("Dark Mode is now OFF.");
+    }
+
+    public boolean isDarkModeEnabled() {
+        return isDarkModeEnabled;
+    }
+}
