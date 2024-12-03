@@ -8,4 +8,3 @@ public class PushNotificationService implements MessageSender {
      System.out.println("Push notification sent: " + message);
  }
 }
-

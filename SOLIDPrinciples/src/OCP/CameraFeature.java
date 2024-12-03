@@ -1,5 +1,5 @@
 package OCP;
-public class CameraFeature implements Feature {
+public class CameraFeature implements IFeature {
     @Override
     public void applyFeature(OperatingSystem os) {
         System.out.println("Opening Camera...");

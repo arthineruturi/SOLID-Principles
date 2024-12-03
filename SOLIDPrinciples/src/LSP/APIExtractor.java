@@ -14,7 +14,7 @@ public class APIExtractor extends DataExtractor {
  @Override
  public void extractData() {
      System.out.println("Fetching data from API...");
-     // Simulate API data fetching logic
+
  }
 
  @Override
